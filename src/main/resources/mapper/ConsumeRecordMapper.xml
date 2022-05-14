@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tencent.wxcloudrun.dao.ConsumeRecordMapper">
+  <resultMap id="BaseResultMap" type="com.tencent.wxcloudrun.model.ConsumeRecord">
+    <!--@mbg.generated-->
+    <!--@Table consumerecord-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="creater" jdbcType="VARCHAR" property="creater" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="modifier" jdbcType="VARCHAR" property="modifier" />
+    <result column="modifyTime" jdbcType="TIMESTAMP" property="modifytime" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+    <result column="consumeId" jdbcType="INTEGER" property="consumeId" />
+    <result column="cardId" jdbcType="INTEGER" property="cardId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, creater, createTime, modifier, modifyTime, deleted,consumeId,cardId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from consumerecord
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByConsumeId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from consumerecord
+    where consumeId = #{consumeId,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from consumerecord
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tencent.wxcloudrun.model.ConsumeRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into consumerecord (creater, createTime, modifier, 
+      modifyTime, deleted)
+    values (#{creater,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR}, 
+      #{modifytime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tencent.wxcloudrun.model.ConsumeRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into consumerecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="creater != null">
+        creater,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="modifytime != null">
+        modifyTime,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="creater != null">
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="modifytime != null">
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.wxcloudrun.model.ConsumeRecord">
+    <!--@mbg.generated-->
+    update consumerecord
+    <set>
+      <if test="creater != null">
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="modifytime != null">
+        modifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tencent.wxcloudrun.model.ConsumeRecord">
+    <!--@mbg.generated-->
+    update consumerecord
+    set creater = #{creater,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      modifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
